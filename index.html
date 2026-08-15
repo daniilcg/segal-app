@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta
       name="description"
-      content="SEGAL — приватный мессенджер для близких. Скачайте приложение для Android."
+      content="SEGAL — приватный мессенджер от SEGAL COMMUNICATIONS. Сообщения и звонки для близких с шифрованием на телефоне."
     />
-    <title>SEGAL — скачать для Android</title>
+    <meta name="theme-color" content="#0b0b0d" />
+    <link rel="icon" href="./logo-mark.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./logo-mark.svg" />
+    <title>SEGAL — приватный мессенджер</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,10 +27,8 @@
         --muted: #a1a1aa;
         --accent: #ff6a00;
         --accent-strong: #ff8533;
-        --info: #38bdf8;
         --radius: 10px;
         --font: "Outfit", "Segoe UI", sans-serif;
-        --shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
       }
 
       * {
@@ -62,7 +63,7 @@
         flex: 1;
         display: grid;
         place-items: center;
-        padding: max(32px, env(safe-area-inset-top)) 24px 40px;
+        padding: max(32px, env(safe-area-inset-top)) 24px 36px;
       }
 
       .hero::before {
@@ -108,14 +109,24 @@
       .panel {
         position: relative;
         z-index: 1;
-        width: min(440px, 100%);
+        width: min(460px, 100%);
         text-align: center;
         animation: rise 700ms ease both;
       }
 
+      .logo-mark {
+        width: 88px;
+        height: 88px;
+        display: block;
+        margin: 0 auto;
+        border-radius: 20px;
+        box-shadow: 0 18px 40px rgba(255, 106, 0, 0.28);
+        animation: rise 500ms ease both;
+      }
+
       .brand {
-        margin: 0;
-        font-size: clamp(3rem, 12vw, 4rem);
+        margin: 18px 0 0;
+        font-size: clamp(2.8rem, 11vw, 3.6rem);
         font-weight: 700;
         letter-spacing: 0.08em;
         line-height: 1;
@@ -131,7 +142,7 @@
       }
 
       .headline {
-        margin: 28px 0 0;
+        margin: 26px 0 0;
         font-size: clamp(1.2rem, 4vw, 1.45rem);
         font-weight: 600;
         line-height: 1.35;
@@ -201,35 +212,67 @@
         color: var(--muted);
       }
 
-      .how {
+      .section {
         position: relative;
         z-index: 1;
-        padding: 8px 24px 48px;
+        padding: 8px 24px 28px;
         max-width: 720px;
         margin: 0 auto;
         animation: rise 900ms ease both;
       }
 
-      .how h2 {
-        margin: 0 0 14px;
+      .section + .section {
+        padding-top: 0;
+      }
+
+      .section h2 {
+        margin: 0 0 12px;
         font-size: 1.15rem;
         font-weight: 600;
       }
 
-      .how ol {
+      .section p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .section ol,
+      .section ul {
         margin: 0;
         padding: 0 0 0 1.2rem;
         color: var(--muted);
         line-height: 1.7;
       }
 
-      .how li + li {
+      .section li + li {
         margin-top: 8px;
       }
 
-      .how strong {
+      .section strong {
         color: var(--text);
         font-weight: 600;
+      }
+
+      .points {
+        list-style: none;
+        padding: 0;
+      }
+
+      .points li {
+        position: relative;
+        padding-left: 1.1rem;
+      }
+
+      .points li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.55em;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
       }
 
       .foot {
@@ -239,26 +282,25 @@
         font-size: 0.85rem;
         border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
       }
-
-      .foot a {
-        color: var(--accent-strong);
-        text-decoration: none;
-      }
-
-      .foot a:hover {
-        text-decoration: underline;
-      }
     </style>
   </head>
   <body>
     <div class="page">
       <header class="hero">
         <div class="panel">
+          <img
+            class="logo-mark"
+            src="./logo-mark.svg"
+            width="88"
+            height="88"
+            alt="Логотип SEGAL — буква S"
+          />
           <p class="brand">SEGAL</p>
           <p class="brand-sub">Communications</p>
           <h1 class="headline">Приватный мессенджер для своих</h1>
           <p class="lead">
-            Пишите и звоните близким. Сообщения шифруются на телефонах — чужие их не прочитают.
+            Приложение для семьи и близких друзей: пишите, звоните голосом и по видео.
+            Переписка шифруется на ваших телефонах.
           </p>
           <div class="cta">
             <a class="btn btn-primary" href="./SEGAL.apk" download="SEGAL.apk">
@@ -272,7 +314,27 @@
         </div>
       </header>
 
-      <section class="how" aria-label="Как установить">
+      <section class="section" aria-label="Что это">
+        <h2>Что это</h2>
+        <p>
+          <strong>SEGAL</strong> — это закрытый мессенджер от
+          <strong>SEGAL COMMUNICATIONS</strong>. Он нужен не для всех подряд, а для небольшого
+          круга людей, которым вы доверяете: родных, близких, тех, с кем важно общаться спокойно
+          и без лишних глаз.
+        </p>
+      </section>
+
+      <section class="section" aria-label="Для чего">
+        <h2>Для чего</h2>
+        <ul class="points">
+          <li><strong>Сообщения</strong> — обычный чат, но с шифрованием на устройстве.</li>
+          <li><strong>Звонки</strong> — аудио и видео прямо из приложения.</li>
+          <li><strong>Приватность</strong> — сервер не хранит текст ваших сообщений в открытом виде.</li>
+          <li><strong>Простота</strong> — скачали, установили, вошли и пользуетесь.</li>
+        </ul>
+      </section>
+
+      <section class="section" aria-label="Как установить">
         <h2>Как установить</h2>
         <ol>
           <li>Нажмите <strong>Скачать для Android</strong> и дождитесь файла.</li>
