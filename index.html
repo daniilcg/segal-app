@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="SEGAL — приватный мессенджер для близких. Скачайте приложение для Android."
+    />
+    <title>SEGAL — скачать для Android</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0b0b0d;
+        --elevated: #141417;
+        --soft: #1c1c21;
+        --border: #2e2e36;
+        --text: #f4f4f5;
+        --muted: #a1a1aa;
+        --accent: #ff6a00;
+        --accent-strong: #ff8533;
+        --info: #38bdf8;
+        --radius: 10px;
+        --font: "Outfit", "Segoe UI", sans-serif;
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        font-family: var(--font);
+        color: var(--text);
+        background:
+          radial-gradient(900px 480px at 12% -8%, rgba(255, 106, 0, 0.18), transparent 55%),
+          radial-gradient(700px 420px at 92% 8%, rgba(56, 189, 248, 0.08), transparent 50%),
+          linear-gradient(180deg, #101014 0%, var(--bg) 42%, #08080a 100%);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .page {
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        flex: 1;
+        display: grid;
+        place-items: center;
+        padding: max(32px, env(safe-area-inset-top)) 24px 40px;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: -20% 20% auto -10%;
+        height: 60%;
+        background: radial-gradient(circle, rgba(255, 106, 0, 0.22), transparent 70%);
+        animation: drift 12s ease-in-out infinite alternate;
+        pointer-events: none;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto -10% -20% 40%;
+        height: 55%;
+        background: radial-gradient(circle, rgba(56, 189, 248, 0.12), transparent 70%);
+        animation: drift 14s ease-in-out infinite alternate-reverse;
+        pointer-events: none;
+      }
+
+      @keyframes drift {
+        from {
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+        to {
+          transform: translate3d(40px, 20px, 0) scale(1.08);
+        }
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      .panel {
+        position: relative;
+        z-index: 1;
+        width: min(440px, 100%);
+        text-align: center;
+        animation: rise 700ms ease both;
+      }
+
+      .brand {
+        margin: 0;
+        font-size: clamp(3rem, 12vw, 4rem);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        line-height: 1;
+      }
+
+      .brand-sub {
+        margin: 10px 0 0;
+        font-size: 0.78rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      .headline {
+        margin: 28px 0 0;
+        font-size: clamp(1.2rem, 4vw, 1.45rem);
+        font-weight: 600;
+        line-height: 1.35;
+      }
+
+      .lead {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.55;
+      }
+
+      .cta {
+        margin-top: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 14px 20px;
+        border-radius: var(--radius);
+        font: inherit;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition:
+          transform 120ms ease,
+          filter 120ms ease,
+          background 120ms ease;
+      }
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #ff8533 0%, var(--accent) 55%, #e11d48 140%);
+        color: #0b0b0d;
+        box-shadow: 0 12px 32px rgba(255, 106, 0, 0.28);
+      }
+
+      .btn-primary:hover {
+        filter: brightness(1.06);
+      }
+
+      .btn-ghost {
+        background: color-mix(in srgb, var(--elevated) 88%, transparent);
+        color: var(--text);
+        border-color: var(--border);
+        backdrop-filter: blur(12px);
+      }
+
+      .btn-ghost:hover {
+        background: var(--soft);
+      }
+
+      .meta {
+        margin: 14px 0 0;
+        font-size: 0.86rem;
+        color: var(--muted);
+      }
+
+      .how {
+        position: relative;
+        z-index: 1;
+        padding: 8px 24px 48px;
+        max-width: 720px;
+        margin: 0 auto;
+        animation: rise 900ms ease both;
+      }
+
+      .how h2 {
+        margin: 0 0 14px;
+        font-size: 1.15rem;
+        font-weight: 600;
+      }
+
+      .how ol {
+        margin: 0;
+        padding: 0 0 0 1.2rem;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .how li + li {
+        margin-top: 8px;
+      }
+
+      .how strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .foot {
+        padding: 20px 24px max(28px, env(safe-area-inset-bottom));
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.85rem;
+        border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+      }
+
+      .foot a {
+        color: var(--accent-strong);
+        text-decoration: none;
+      }
+
+      .foot a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div class="panel">
+          <p class="brand">SEGAL</p>
+          <p class="brand-sub">Communications</p>
+          <h1 class="headline">Приватный мессенджер для своих</h1>
+          <p class="lead">
+            Пишите и звоните близким. Сообщения шифруются на телефонах — чужие их не прочитают.
+          </p>
+          <div class="cta">
+            <a class="btn btn-primary" href="./SEGAL.apk" download="SEGAL.apk">
+              Скачать для Android
+            </a>
+            <a class="btn btn-ghost" href="https://segal-fiot.onrender.com" rel="noopener">
+              Открыть в браузере
+            </a>
+          </div>
+          <p class="meta">Android 7 и новее · один файл · без магазина приложений</p>
+        </div>
+      </header>
+
+      <section class="how" aria-label="Как установить">
+        <h2>Как установить</h2>
+        <ol>
+          <li>Нажмите <strong>Скачать для Android</strong> и дождитесь файла.</li>
+          <li>Откройте скачанный <strong>SEGAL.apk</strong> и разрешите установку, если телефон спросит.</li>
+          <li>При первом запуске разрешите уведомления — так не пропустите звонок.</li>
+          <li>Создайте аккаунт или войдите. Дальше просто пишите и звоните своим.</li>
+        </ol>
+      </section>
+
+      <footer class="foot">
+        Разработчик · <strong>SEGAL COMMUNICATIONS</strong>
+        <br />
+        Обновления чата приходят сами — новую APK ставить не нужно каждый раз.
+      </footer>
+    </div>
+  </body>
+</html>
