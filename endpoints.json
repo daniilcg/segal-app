@@ -1,7 +1,8 @@
 {
   "updatedAt": "2026-08-15",
-  "note": "Put RU-reachable mirrors FIRST. GitHub Pages hosts this file for clients behind DPI.",
+  "note": "Put RU-reachable hosts FIRST. Do not remove onrender fallback.",
   "apps": [
+    "https://segal.mplcrm.com",
     "https://segal-fiot.onrender.com"
   ]
 }
