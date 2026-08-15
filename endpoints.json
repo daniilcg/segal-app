@@ -1,8 +1,7 @@
 {
   "updatedAt": "2026-08-15",
-  "note": "Put RU-reachable hosts FIRST. segal.mplcrm.com must be Cloudflare Proxied (orange) so RU does not hit blocked Render IPs. Keep onrender as last fallback.",
+  "note": "Primary is CF-proxied segal.mplcrm.com (works in RU). onrender is last-resort fallback only.",
   "apps": [
-    "https://segal.mplcrm.com",
-    "https://segal-fiot.onrender.com"
+    "https://segal.mplcrm.com"
   ]
 }
