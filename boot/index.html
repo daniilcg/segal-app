@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#0b0b0d" />
+    <meta http-equiv="refresh" content="0; url=https://segal.mplcrm.com/" />
     <title>SEGAL</title>
     <style>
       html,
@@ -16,75 +17,19 @@
         display: grid;
         place-items: center;
       }
-      .card {
-        max-width: 22rem;
-        padding: 1.5rem;
-        text-align: center;
-      }
       .muted {
         opacity: 0.7;
-        font-size: 0.95rem;
-        line-height: 1.4;
       }
     </style>
   </head>
   <body>
-    <div class="card">
-      <div style="font-size: 1.6rem; font-weight: 700; letter-spacing: 0.08em">SEGAL</div>
-      <p class="muted" id="status">Поиск доступного сервера…</p>
-    </div>
+    <p class="muted">Открываем SEGAL…</p>
     <script>
-      (async function () {
-        var status = document.getElementById('status');
-        var catalogs = [
-          './endpoints.json',
-          'https://daniilcg.github.io/segal-app/endpoints.json',
-        ];
-        var apps = ['https://segal.mplcrm.com', 'https://segal-fiot.onrender.com'];
-        for (var c = 0; c < catalogs.length; c++) {
-          try {
-            var res = await fetch(catalogs[c], { cache: 'no-store' });
-            if (!res.ok) continue;
-            var data = await res.json();
-            if (data && data.apps && data.apps.length) {
-              apps = data.apps.concat(apps.filter(function (a) { return data.apps.indexOf(a) < 0; }));
-              break;
-            }
-          } catch (e) {}
-        }
-        function probe(base) {
-          return fetch(String(base).replace(/\/$/, '') + '/health', {
-            cache: 'no-store',
-            mode: 'cors',
-            credentials: 'omit',
-          })
-            .then(function (r) {
-              return r.ok ? r.json().catch(function () { return { status: 'ok' }; }) : Promise.reject();
-            })
-            .then(function (j) {
-              return !j || j.status === 'ok' || j.ok === true;
-            })
-            .catch(function () {
-              return false;
-            });
-        }
-        for (var i = 0; i < apps.length; i++) {
-          status.textContent = 'Проверка ' + (i + 1) + '/' + apps.length + '…';
-          var ok = await Promise.race([
-            probe(apps[i]),
-            new Promise(function (r) { setTimeout(function () { r(false); }, 5500); }),
-          ]);
-          if (ok) {
-            try {
-              localStorage.setItem('segal_api_base', String(apps[i]).replace(/\/$/, ''));
-            } catch (e) {}
-            location.replace(String(apps[i]).replace(/\/$/, '') + '/');
-            return;
-          }
-        }
-        status.innerHTML =
-          'Сервер сейчас недоступен из этой сети (блокировки).<br/>Попробуйте позже или откройте зеркало из списка endpoints.';
-      })();
+      try {
+        localStorage.setItem('segal_api_base', 'https://segal.mplcrm.com');
+      } catch (e) {}
+      // Always open the CF-proxied app. Do not strand elderly users on a probe error page.
+      location.replace('https://segal.mplcrm.com/');
     </script>
   </body>
 </html>
